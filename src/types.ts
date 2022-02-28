@@ -1,52 +1,33 @@
 // * INCOME STATEMENT
 // income statement basic
-type IncomeItem = {
-  description: string;
-  cashFlow: number;
-};
+// type IncomeItem = [string, number];
 
 // income statement
 type IncomeStatement = {
   salary: number;
   interest: number;
   dividends: number;
-  income: IncomeItem[];
+  realEstate: RealEstateItem[];
+  business: RealEstateItem[];
   taxes: number;
   homeMortgagePayment: number;
   schoolLoanPayment: number;
   carLoanPayment: number;
   creditCardPayment: number;
   otherExpenses: number;
-  childExpenses: number;
   loanPayment: number;
 };
 
+type TwoColumRowItem = [string, number];
+type ThreeColumnRowItem = [string, number, number];
+
 // * BALANCE SHEET
 // assets basic
-type StockItem = {
-  name: string;
-  numberOfShares: number;
-  costPerShare: number;
-};
-
-type FundsItem = StockItem;
-type CDsItem = StockItem;
-
-type RealEstateItem = {
-  name: string;
-  downPay: number;
-  cost: number;
-};
-
-type BusinessItem = RealEstateItem;
-
-// balance sheet basic
-type RealEstateLiabilityItem = {
-  name: string;
-  mortgageLiability: number;
-};
-
-type BusinessLiabilityItem = RealEstateLiabilityItem;
+type StockItem = TwoColumRowItem;
+type FundsItem = TwoColumRowItem;
+type CDsItem = TwoColumRowItem;
+type RealEstateItem = TwoColumRowItem | ThreeColumnRowItem;
+type BusinessItem = TwoColumRowItem | ThreeColumnRowItem;
 
 // balance sheet
 type BalanceSheet = {
@@ -63,8 +44,8 @@ type BalanceSheet = {
     carLoans: number;
     creditCards: number;
     loan: number;
-    realEstate: RealEstateLiabilityItem[];
-    business: BusinessLiabilityItem[];
+    realEstate: RealEstateItem[];
+    business: BusinessItem[];
   };
 };
 

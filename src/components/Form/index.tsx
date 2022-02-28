@@ -6,6 +6,7 @@ import * as Types from './types';
 
 // components
 import Input from './Input';
+import ArrayInput from './ArrayInput';
 import Select from './Select';
 
 // utils
@@ -27,13 +28,15 @@ function Form(props: Props): ReactElement {
       onSubmit={onSubmit}
       validationSchema={Utils.getValidationSchema(validationSchema)}
     >
-      <FormikForm>{children}</FormikForm>
+      {/* <FormikForm>{children}</FormikForm> */}
+      <div>{children}</div>
     </Formik>
   );
 }
 
 Form.Input = Input;
 Form.Select = Select;
+Form.ArrayInput = ArrayInput;
 // Form.Types = Types;
 
 export default Form;

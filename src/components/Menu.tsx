@@ -17,7 +17,7 @@ export default function Menu(props: Props): ReactElement {
   };
 
   return (
-    <div className="h-12 px-2 bg-yellow-400 w-screen flex justify-between items-center fixed top-0 shadow-md">
+    <div className="h-12 px-2 bg-yellow-400 w-screen flex justify-between items-center fixed z-10 top-0 shadow-md">
       <div className="uppercase text-gray-600 font-bold text-xl">Cash Flow Game</div>
       <div>
         <input
