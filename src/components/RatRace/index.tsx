@@ -1,31 +1,20 @@
 import { ReactElement } from 'react';
-import TableTitle from '@/components/TableTitle';
-import TableHeader from '@/components/TableHeader';
-import { Column } from '@/components/tableTypes';
 import SheetTitle from '@/components/SheetTitle';
-import { Sheet } from '@/types';
 import Form from '@/components/Form';
-import { useFormikContext, FieldArray, Form as FormikForm, Field } from 'formik';
-import _ from 'lodash';
 import Income from './components/Income';
 import Expenses from './components/Expenses';
 import Auditor from './components/Auditor';
 import Assets from './components/Assets';
 import Liabilities from './components/Liabilities';
 
-type Props = {
-  currentPlayer: string;
-  sheet: Sheet;
-};
-
-export default function RatRace(props: Props): ReactElement {
-  const { currentPlayer, sheet } = props;
-  const { values } = useFormikContext<Sheet>();
-
-  // console.log('balanceSheet: ', values.balanceSheet);
-
+export default function RatRace(): ReactElement {
   return (
     <div className="bg-blue-100 p-4 rounded-md shadow-md">
+      <div className="mb-4 p-2 rounded-md bg-blue-300">
+        <span className="font-semibold capitalize">goal</span>: Get out of the Rat Race and onto the Fast Track by
+        building your <span className="font-semibold">Passive Income</span> to be<span> </span>
+        <span className="font-semibold">greater</span> than your <span className="font-semibold">Total Expenses</span>
+      </div>
       <div className="mb-4">
         <Form.Input
           fieldName="profession"

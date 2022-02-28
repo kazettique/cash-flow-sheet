@@ -37,7 +37,7 @@ export default function PlayerSheet(props: Props): ReactElement {
           <span> right now</span>
           <span>{isRatRace ? '.' : '!!'}</span>
         </h2>
-        <div>{isRatRace ? <RatRace currentPlayer={currentPlayer} sheet={sheet} /> : <FastTrack />}</div>
+        <div>{isRatRace ? <RatRace /> : <FastTrack />}</div>
         <div className="mt-3 rounded-md flex justify-center bg-gray-200">
           {isRatRace ? (
             <button
