@@ -2,65 +2,35 @@ import { ReactElement } from 'react';
 import TableTitle from '@/components/TableTitle';
 import Form from '@/components/Form';
 import { Sheet } from '@/types';
-import _ from 'lodash';
 import { useFormikContext } from 'formik';
+import { numberWithCommas } from '@/utils';
+import { useSheetComputed } from '@/hooks';
 
 export default function Auditor(): ReactElement {
+  const { passiveIncome, totalExpense, totalIncome, monthlyCashFlow } = useSheetComputed();
   const { values } = useFormikContext<Sheet>();
-  const { incomeStatement, children } = values;
-  const { numberOfChildren, perChildExpense } = children;
-  const {
-    salary,
-    interest,
-    dividends,
-    realEstate,
-    business,
-    taxes,
-    homeMortgagePayment,
-    schoolLoanPayment,
-    carLoanPayment,
-    creditCardPayment,
-    otherExpenses,
-    loanPayment,
-  } = incomeStatement;
-
-  const totalRealEstateCashFlow = _.sumBy(realEstate, (item) => item[1]);
-  const totalBusiness = _.sumBy(business, (item) => item[1]);
-  const passiveIncome = Number(interest) + Number(dividends) + Number(totalRealEstateCashFlow) + Number(totalBusiness);
-  const totalIncome = Number(salary) + Number(passiveIncome);
-
-  const childExpenses = Number(numberOfChildren) * Number(perChildExpense);
-  const totalExpense =
-    Number(taxes) +
-    Number(homeMortgagePayment) +
-    Number(schoolLoanPayment) +
-    Number(carLoanPayment) +
-    Number(carLoanPayment) +
-    Number(creditCardPayment) +
-    Number(otherExpenses) +
-    Number(childExpenses) +
-    Number(loanPayment);
-
-  const monthlyCashFlow = totalBusiness - totalExpense;
+  const { incomeStatement } = values;
+  const { salary } = incomeStatement;
 
   return (
     <>
       <TableTitle>Auditor</TableTitle>
       <div className="border-b-2 border-blue-900">
-        <Form.Input
-          fieldName="incomeStatement.salary"
-          customLabelName="salary"
-          className="my-2 py-5 text-right"
-          labelClassName="mr-2 font-semibold"
-          inputClassName="w-60 px-2 mx-1 h-8 border-b border-blue-900"
-          disabled
-        />
+        <div className="my-2 py-5">
+          <div className="flex justify-end">
+            <div className="capitalize font-semibold mr-2">Salary</div>
+            <div className="w-60 px-2 mx-1 h-8 border-b border-blue-900 text-left">
+              <span>$</span>
+              {numberWithCommas(salary)}
+            </div>
+          </div>
+        </div>
         <div className="my-2 py-5">
           <div className="flex justify-end">
             <div className="capitalize font-semibold mr-2"> + Passive Income</div>
             <div className="w-60 px-2 mx-1 h-8 border-b border-blue-900 text-left">
               <span>$</span>
-              {passiveIncome}
+              {numberWithCommas(passiveIncome)}
             </div>
           </div>
           <div className="font-light my-2 text-right">
@@ -72,7 +42,7 @@ export default function Auditor(): ReactElement {
             <div className="capitalize font-semibold mr-2"> = Total Income</div>
             <div className="w-60 px-2 mx-1 border-b-4 border-blue-900 text-left bg-yellow-200 shadow-md flex items-center">
               <span>$</span>
-              {totalIncome}
+              {numberWithCommas(totalIncome)}
             </div>
           </div>
           <div className="font-light my-2 text-right">(Salary + Passive Income)</div>
@@ -98,7 +68,7 @@ export default function Auditor(): ReactElement {
             <div className="capitalize font-semibold mr-2"> - Total Expenses</div>
             <div className="w-60 px-2 mx-1 border-b border-blue-900 text-left">
               <span>$</span>
-              {totalExpense}
+              {numberWithCommas(totalExpense)}
             </div>
           </div>
         </div>
@@ -110,7 +80,7 @@ export default function Auditor(): ReactElement {
             </div>
             <div className="w-60 px-2 mx-1 border-b-4 border-blue-900 text-left bg-yellow-200 shadow-md flex items-center">
               <span>$</span>
-              {monthlyCashFlow}
+              {numberWithCommas(monthlyCashFlow)}
             </div>
           </div>
           <div className="font-light my-2 text-right">(Total Income - Total Expenses)</div>

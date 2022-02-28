@@ -55,12 +55,16 @@ type Children = {
   perChildExpense: number;
 };
 
+// * FAST TRACK BASIC
+type IncomeRecordItem = TwoColumRowItem;
+
 // EXPORT
 export type Sheet = {
   profession: string;
   incomeStatement: IncomeStatement;
   balanceSheet: BalanceSheet;
   children: Children;
+  incomeRecord: IncomeRecordItem[];
   isRatRace: boolean;
   createDate: Date;
 };

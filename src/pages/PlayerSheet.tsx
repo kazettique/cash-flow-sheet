@@ -8,12 +8,12 @@ import Form from '@/components/Form';
 type Props = {
   currentPlayer: string;
   sheet: Sheet;
+  isRatRace: boolean;
+  setIsRatRace: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default function PlayerSheet(props: Props): ReactElement {
-  const { currentPlayer, sheet } = props;
-  // const isRatRace = true;
-  const [isRatRace, setIsRatRace] = useState(true);
+  const { currentPlayer, sheet, isRatRace, setIsRatRace } = props;
   const isDisabled = false;
   const status = isRatRace ? 'Rat Race' : 'Fast Track';
 

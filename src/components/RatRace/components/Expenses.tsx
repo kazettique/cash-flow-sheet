@@ -5,6 +5,7 @@ import Form from '@/components/Form';
 import { Column } from '@/components/tableTypes';
 import { Sheet } from '@/types';
 import { useFormikContext } from 'formik';
+import { numberWithCommas } from '@/utils';
 
 export default function Expenses(): ReactElement {
   const { values } = useFormikContext<Sheet>();
@@ -64,17 +65,9 @@ export default function Expenses(): ReactElement {
         labelClassName="pl-2 w-2/3"
         inputClassName="w-1/3 text-gray-600 rounded-sm px-2"
       />
-      {/* <Form.Input
-        fieldName="incomeStatement.childExpenses"
-        customLabelName="child expenses"
-        className="flex border-b border-blue-900 my-2 py-2"
-        labelClassName="pl-2 w-2/3"
-        inputClassName="w-1/3 text-gray-600 rounded-sm px-2"
-      />
-       */}
       <div className="flex border-b border-blue-900 my-2 py-2">
         <div className="pl-2 w-2/3">Child Expenses</div>
-        <div className="w-1/3 text-gray-600 rounded-sm px-2">{childExpenses}</div>
+        <div className="w-1/3 text-gray-600 rounded-sm px-2">{numberWithCommas(childExpenses)}</div>
       </div>
 
       <Form.Input

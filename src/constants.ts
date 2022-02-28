@@ -45,4 +45,5 @@ export const INITIAL_PLAYER_SHEET: Sheet = {
     numberOfChildren: 0,
     perChildExpense: 0,
   },
+  incomeRecord: [],
 };

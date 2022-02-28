@@ -6,5 +6,5 @@ type Props = {
 
 export default function SheetTitle(props: Props): ReactElement {
   const { children } = props;
-  return <h2 className="text-gray-800 text-2xl font-bold">{children}</h2>;
+  return <h2 className="text-gray-800 text-2xl font-bold mx-1">{children}</h2>;
 }
