@@ -7,17 +7,21 @@ import { Field, FieldArray, useFormikContext } from 'formik';
 import _ from 'lodash';
 import { numberWithCommas } from '@/utils';
 import { useSheetComputed } from '@/hooks';
+import Progress from '@/components/Progress';
 
 export default function FastTrack(): ReactElement {
   const { values } = useFormikContext<Sheet>();
   const { incomeRecord } = values;
-  const { passiveIncome, beginningCashFlowDayIncome, cashFlowDayIncomeGoal } = useSheetComputed();
+  const { passiveIncome, beginningCashFlowDayIncome, cashFlowDayIncomeGoal, totalMonthlyCashFlowIncome } =
+    useSheetComputed();
 
   const incomeRecordHeader: Column[] = [
     { value: 'Business', width: 'w-2/4' },
     { value: 'Monthly Cash Flow', width: 'w-1/4' },
     { value: 'New CASHFLOW Day Income', width: 'w-1/4' },
   ];
+
+  const currentTotalCashflowIncome = totalMonthlyCashFlowIncome + beginningCashFlowDayIncome;
 
   return (
     <div className="bg-yellow-100 p-4 rounded-md shadow-md">
@@ -189,7 +193,7 @@ export default function FastTrack(): ReactElement {
                   <button
                     type="button"
                     className="rounded-md cursor-pointer bg-yellow-300 w-full mt-2 mb-4 p-1 text-yellow-800 uppercase shadow-md"
-                    onClick={(event) => push(['', ''])}
+                    onClick={() => push(['', ''])}
                   >
                     add
                   </button>
@@ -199,6 +203,12 @@ export default function FastTrack(): ReactElement {
           </FieldArray>
         </div>
       </div>
+      <Progress
+        title="Fast Track Progress"
+        description="Progress Rate: Passive Income / Cashflow Day Income Goal * 100%"
+        current={currentTotalCashflowIncome}
+        goal={cashFlowDayIncomeGoal}
+      />
     </div>
   );
 }

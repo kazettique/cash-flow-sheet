@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import _ from 'lodash';
 import Menu from '@/components/Menu';
 import PlayerTabs from '@/components/PlayerTabs';

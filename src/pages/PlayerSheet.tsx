@@ -1,4 +1,4 @@
-import { ReactElement, useState } from 'react';
+import { ReactElement } from 'react';
 import { Sheet } from '@/types';
 import RatRace from '@/components/RatRace';
 import FastTrack from '@/components/FastTrack';
@@ -17,7 +17,7 @@ export default function PlayerSheet(props: Props): ReactElement {
   const isDisabled = false;
   const status = isRatRace ? 'Rat Race' : 'Fast Track';
 
-  const onSubmit: OnSubmit = (values, actions) => {
+  const onSubmit: OnSubmit = (values) => {
     // console.log('sheet: ', sheet);
     console.log('submit: ', values);
   };

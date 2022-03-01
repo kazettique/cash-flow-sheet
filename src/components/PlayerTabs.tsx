@@ -1,6 +1,4 @@
 import { ReactElement } from 'react';
-import _ from 'lodash';
-import { Sheet } from '@/types';
 
 type Props = {
   tabList: string[];
