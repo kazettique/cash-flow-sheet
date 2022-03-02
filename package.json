@@ -2,6 +2,7 @@
   "name": "cash-flow-sheet",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/cash-flow/sheet",
   "dependencies": {
     "@craco/craco": "^6.4.3",
     "@testing-library/jest-dom": "^5.14.1",
@@ -29,7 +30,8 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test"
+    "test": "craco test",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
