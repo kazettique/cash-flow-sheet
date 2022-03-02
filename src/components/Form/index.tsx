@@ -6,7 +6,6 @@ import * as Types from './types';
 
 // components
 import Input from './Input';
-import ArrayInput from './ArrayInput';
 import Select from './Select';
 
 // utils
@@ -37,7 +36,6 @@ function Form<T>(props: Props<T>): ReactElement {
 
 Form.Input = Input;
 Form.Select = Select;
-Form.ArrayInput = ArrayInput;
 // Form.Types = Types;
 
 export default Form;

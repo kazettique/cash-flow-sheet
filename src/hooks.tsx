@@ -106,11 +106,31 @@ export function useLocalStorageData() {
     alert('Data Saved!');
   };
 
-  const deleteData = (player: string) => {};
+  const deletePlayer = (player: string): void => {
+    const data = localStorage.getItem(localStorageKeyName);
+    let originalData: LocalStorageType = {};
+    if (_.isString(data)) {
+      originalData = JSON.parse(data);
+    }
+
+    const playerExist = _.has(originalData, player);
+    if (playerExist) {
+      delete originalData[player];
+      localStorage.setItem(localStorageKeyName, JSON.stringify(originalData));
+      console.log('Delete player successfully!');
+    } else {
+      console.error('No player to delete!');
+    }
+  };
+
+  const renamePlayer = (player: string): boolean => {
+    return false;
+  };
 
   return {
     getData,
     saveData,
-    deleteData,
+    deletePlayer,
+    renamePlayer,
   };
 }

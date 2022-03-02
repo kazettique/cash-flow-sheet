@@ -61,8 +61,10 @@ function App() {
           <>
             <PlayerTabs currentPlayer={currentPlayer} setCurrentPlayer={setCurrentPlayer} tabList={tabList} />
             <PlayerSheet
-              currentPlayer={currentPlayer}
+              tabList={tabList}
               sheet={playerList[currentPlayer]}
+              currentPlayer={currentPlayer}
+              setCurrentPlayer={setCurrentPlayer}
               isRatRace={isRatRace}
               setIsRatRace={setIsRatRace}
               setPlayerList={setPlayerList}

@@ -12,14 +12,16 @@ type Props = {
   isRatRace: boolean;
   setIsRatRace: React.Dispatch<React.SetStateAction<boolean>>;
   setPlayerList: React.Dispatch<React.SetStateAction<LocalStorageType>>;
+  setCurrentPlayer: React.Dispatch<React.SetStateAction<string>>;
+  tabList: string[];
 };
 
 export default function PlayerSheet(props: Props): ReactElement {
-  const { currentPlayer, sheet, isRatRace, setIsRatRace, setPlayerList } = props;
+  const { currentPlayer, sheet, isRatRace, setIsRatRace, setPlayerList, tabList, setCurrentPlayer } = props;
   const isDisabled = false;
   const status = isRatRace ? 'Rat Race' : 'Fast Track';
 
-  const { saveData } = useLocalStorageData();
+  const { saveData, deletePlayer, getData } = useLocalStorageData();
 
   const onSubmit: OnSubmit<Sheet> = (values) => {
     saveData(currentPlayer, values);
@@ -28,6 +30,13 @@ export default function PlayerSheet(props: Props): ReactElement {
 
   const validationSchema = {
     // greeting: Yup.string().required(),
+  };
+
+  const onDelete = (player: string): void => {
+    deletePlayer(player);
+    const newPlayerList = getData();
+    setPlayerList(newPlayerList);
+    setCurrentPlayer(tabList[0]);
   };
 
   return (
@@ -44,9 +53,18 @@ export default function PlayerSheet(props: Props): ReactElement {
             <span> right now</span>
             <span>{isRatRace ? '.' : '!!'}</span>
           </h2>
-          <button type="submit" className="py-1 px-5 bg-green-500 uppercase text-gray-100 rounded-md shadow-md">
-            Save
-          </button>
+          <div>
+            <button type="submit" className="py-1 px-2 bg-green-500 uppercase text-gray-100 rounded-md shadow-md">
+              Save
+            </button>
+            <button
+              type="button"
+              onClick={() => onDelete(currentPlayer)}
+              className="py-1 px-2 ml-2 bg-red-500 uppercase text-gray-100 rounded-md shadow-md"
+            >
+              Delete
+            </button>
+          </div>
         </div>
 
         <div>{isRatRace ? <RatRace /> : <FastTrack />}</div>
