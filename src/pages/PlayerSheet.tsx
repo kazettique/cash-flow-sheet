@@ -22,7 +22,6 @@ export default function PlayerSheet(props: Props): ReactElement {
   const { saveData } = useLocalStorageData();
 
   const onSubmit: OnSubmit<Sheet> = (values) => {
-    console.log('submit!');
     saveData(currentPlayer, values);
     setPlayerList((prev) => ({ ...prev, [currentPlayer]: values }));
   };
@@ -45,7 +44,7 @@ export default function PlayerSheet(props: Props): ReactElement {
             <span> right now</span>
             <span>{isRatRace ? '.' : '!!'}</span>
           </h2>
-          <button type="submit" className="py-1 px-5 bg-green-300 uppercase rounded-md">
+          <button type="submit" className="py-1 px-5 bg-green-500 uppercase text-gray-100 rounded-md shadow-md">
             Save
           </button>
         </div>

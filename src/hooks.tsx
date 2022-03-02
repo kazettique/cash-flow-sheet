@@ -103,6 +103,7 @@ export function useLocalStorageData() {
     };
 
     localStorage.setItem(localStorageKeyName, JSON.stringify(newData));
+    alert('Data Saved!');
   };
 
   const deleteData = (player: string) => {};
