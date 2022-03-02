@@ -1,6 +1,6 @@
 import { useFormikContext } from 'formik';
 import _ from 'lodash';
-import { Sheet } from './types';
+import { Sheet, LocalStorageType } from './types';
 
 type SheetTotal = {
   totalRealEstateCashFlow: number;
@@ -69,5 +69,47 @@ export function useSheetComputed(): SheetTotal {
     beginningCashFlowDayIncome,
     cashFlowDayIncomeGoal,
     totalMonthlyCashFlowIncome,
+  };
+}
+
+type Method = {
+  getData: () => LocalStorageType | string;
+  saveData: (player: string, payload: Sheet) => void;
+};
+
+const localStorageKeyName = 'cashFlow';
+export function useLocalStorageData() {
+  const getData = () => {
+    const data = localStorage.getItem(localStorageKeyName);
+
+    if (_.isString(data)) {
+      return JSON.parse(data);
+    } else {
+      const emptyData = {};
+      localStorage.setItem(localStorageKeyName, JSON.stringify(emptyData));
+      const data2 = localStorage.getItem(localStorageKeyName);
+      if (_.isString(data2)) {
+        return JSON.parse(data2);
+      }
+    }
+  };
+
+  const saveData = (player: string, payload: Sheet) => {
+    const data = getData();
+
+    const newData = {
+      ...data,
+      [player]: payload,
+    };
+
+    localStorage.setItem(localStorageKeyName, JSON.stringify(newData));
+  };
+
+  const deleteData = (player: string) => {};
+
+  return {
+    getData,
+    saveData,
+    deleteData,
   };
 }

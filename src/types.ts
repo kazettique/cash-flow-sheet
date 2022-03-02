@@ -71,6 +71,5 @@ export type Sheet = {
 
 // LOCAL STORAGE
 export type LocalStorageType = {
-  name: string;
-  sheet: Sheet;
-}[];
+  [player: string]: Sheet;
+};

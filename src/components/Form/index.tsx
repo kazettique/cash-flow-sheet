@@ -12,24 +12,25 @@ import Select from './Select';
 // utils
 import Utils from './utils';
 
-interface Props {
-  initialValues: Types.Values;
-  onSubmit: Types.OnSubmit;
+interface Props<T> {
+  initialValues: T;
+  onSubmit: Types.OnSubmit<T>;
   children: ReactNode;
   validationSchema?: any;
+  enableReinitialize?: boolean;
 }
 
-function Form(props: Props): ReactElement {
-  const { initialValues, onSubmit, children, validationSchema } = props;
+function Form<T>(props: Props<T>): ReactElement {
+  const { initialValues, onSubmit, children, validationSchema, enableReinitialize = false } = props;
 
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={onSubmit}
       validationSchema={Utils.getValidationSchema(validationSchema)}
+      enableReinitialize={enableReinitialize}
     >
-      {/* <FormikForm>{children}</FormikForm> */}
-      <div>{children}</div>
+      <FormikForm>{children}</FormikForm>
     </Formik>
   );
 }

@@ -3,32 +3,40 @@ import _ from 'lodash';
 import Menu from '@/components/Menu';
 import PlayerTabs from '@/components/PlayerTabs';
 import PlayerSheet from '@/pages/PlayerSheet';
-import { Sheet } from '@/types';
+import { LocalStorageType } from '@/types';
 import { getInitialPlayerSheet } from '@/utils';
+import { useLocalStorageData } from '@/hooks';
 
-type PlayerList = {
-  [player: string]: Sheet;
-};
+// type PlayerList = {
+//   [player: string]: Sheet;
+// };
 
-const INITIAL_PLAYER_LIST: PlayerList = {
-  woody: getInitialPlayerSheet(),
-  enoch: getInitialPlayerSheet(),
-};
-const INITIAL_CURRENT_PLAYER: string = _.chain(INITIAL_PLAYER_LIST).keys().head().value();
+// const INITIAL_PLAYER_LIST: PlayerList = {
+//   woody: getInitialPlayerSheet(),
+//   enoch: getInitialPlayerSheet(),
+// };
+// const INITIAL_CURRENT_PLAYER: string = _.chain(INITIAL_PLAYER_LIST).keys().head().value();
 
 function App() {
-  const [playerList, setPlayerList] = useState<PlayerList>(INITIAL_PLAYER_LIST);
+  const { getData, saveData } = useLocalStorageData();
+
+  const INITIAL_PLAYER_LIST = getData();
+  const INITIAL_CURRENT_PLAYER: string = _.chain(INITIAL_PLAYER_LIST).keys().head().value();
+
+  const [playerList, setPlayerList] = useState<LocalStorageType>(INITIAL_PLAYER_LIST);
   const [currentPlayer, setCurrentPlayer] = useState<string>(INITIAL_CURRENT_PLAYER);
-  const [isRatRace, setIsRatRace] = useState(false);
+  const [isRatRace, setIsRatRace] = useState(true);
 
   const createPlayer = (newPlayerName: string): void => {
     const hasDuplicatePlayerName = _.has(playerList, newPlayerName);
     if (hasDuplicatePlayerName) {
       alert('Duplicate name!! Please try another name');
     } else {
+      const newPlayerData = getInitialPlayerSheet();
       setPlayerList((prev) => {
-        return { ...prev, [newPlayerName]: getInitialPlayerSheet() };
+        return { ...prev, [newPlayerName]: newPlayerData };
       });
+      saveData(newPlayerName, newPlayerData);
       setCurrentPlayer(newPlayerName);
       setIsRatRace(true);
     }
@@ -57,6 +65,7 @@ function App() {
               sheet={playerList[currentPlayer]}
               isRatRace={isRatRace}
               setIsRatRace={setIsRatRace}
+              setPlayerList={setPlayerList}
             />
           </>
         )}

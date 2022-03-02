@@ -50,9 +50,6 @@ export default function RatRace(): ReactElement {
           </div>
         </div>
       </div>
-      <button type="submit" className="p-3 bg-green-300 uppercase rounded-md m-3">
-        Submit
-      </button>
       <Progress
         title="Rat Race Progress"
         description="Progress Rate: Passive Income / Total Expenses * 100%"
