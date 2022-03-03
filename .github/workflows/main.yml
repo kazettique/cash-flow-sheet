@@ -42,6 +42,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           branch: gh-pages # The branch the action should deploy to.
-          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          #         FOLDER: ./build # The folder the action should deploy.
-          folder: build
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          folder: build # The folder the action should deploy.
