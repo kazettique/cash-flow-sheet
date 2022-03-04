@@ -52,7 +52,7 @@ function App() {
   return (
     <div className="w-screen h-auto">
       <Menu createPlayer={createPlayer} />
-      <div className="container mx-auto mt-16 mb-4">
+      <div className="container mx-auto mt-28 sm:mt-16 mb-4 px-2">
         {isPlayerListEmpty ? (
           <div className="h-96 flex items-center justify-center">
             <p className="text-gray-800 text-2xl text-bold text-center">Please create player to start the game!</p>

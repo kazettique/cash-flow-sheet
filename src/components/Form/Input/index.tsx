@@ -1,4 +1,4 @@
-import { ChangeEvent, ReactElement } from 'react';
+import { ChangeEvent, ReactElement, HTMLAttributes } from 'react';
 import { useFormikContext, useField } from 'formik';
 import ErrorMessage from '../ErrorMessage';
 
@@ -23,6 +23,7 @@ interface Props {
   className?: string;
   showLabel?: boolean;
   disabled?: boolean;
+  inputMode?: any;
 }
 
 function Input(props: Props): ReactElement {
@@ -37,6 +38,7 @@ function Input(props: Props): ReactElement {
     showLabel = true,
     customLabelName,
     disabled = false,
+    inputMode,
   } = props;
 
   const [field] = useField(name);
@@ -64,6 +66,7 @@ function Input(props: Props): ReactElement {
         placeholder={placeholder}
         className={inputClassName}
         disabled={disabled}
+        inputMode={inputMode}
       />
       <ErrorMessage fieldName={name} className={errorMessageClassName} />
     </div>
