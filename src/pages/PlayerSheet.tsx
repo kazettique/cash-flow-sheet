@@ -5,6 +5,7 @@ import FastTrack from '@/components/FastTrack';
 import { OnSubmit } from '@/components/Form/types';
 import Form from '@/components/Form';
 import { useLocalStorageData } from '@/hooks';
+import _ from 'lodash';
 
 type Props = {
   currentPlayer: string;
@@ -33,10 +34,12 @@ export default function PlayerSheet(props: Props): ReactElement {
   };
 
   const onDelete = (player: string): void => {
-    deletePlayer(player);
-    const newPlayerList = getData();
-    setPlayerList(newPlayerList);
-    setCurrentPlayer(tabList[0]);
+    if (confirm('Confirm delete this player?')) {
+      deletePlayer(player);
+      const newPlayerList = getData();
+      setPlayerList(newPlayerList);
+      setCurrentPlayer('');
+    }
   };
 
   return (
