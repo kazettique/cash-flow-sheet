@@ -29,6 +29,7 @@ export default function Income(): ReactElement {
         className="flex border-b border-blue-900 my-2 py-2"
         labelClassName="pl-2 w-2/3"
         inputClassName="w-1/3 text-gray-600 w-full rounded-sm px-2"
+        inputMode="decimal"
       />
       <Form.Input
         fieldName="incomeStatement.interest"
@@ -36,6 +37,7 @@ export default function Income(): ReactElement {
         className="flex border-b border-blue-900 my-2 py-2"
         labelClassName="pl-2 w-2/3"
         inputClassName="w-1/3 text-gray-600 rounded-sm px-2"
+        inputMode="decimal"
       />
       <Form.Input
         fieldName="incomeStatement.dividends"
@@ -43,6 +45,7 @@ export default function Income(): ReactElement {
         className="flex border-b border-blue-900 my-2 py-2"
         labelClassName="pl-2 w-2/3"
         inputClassName="w-1/3 text-gray-600 rounded-sm px-2"
+        inputMode="decimal"
       />
       <TableHeader columnList={incomeHeaderList} />
       <FieldArray name="incomeStatement.realEstate">
@@ -66,6 +69,7 @@ export default function Income(): ReactElement {
                         as="input"
                         name={`incomeStatement.realEstate.${rowIndex}.${index}`}
                         className="text-gray-600 rounded-sm px-2 w-full"
+                        inputMode={index === 0 ? 'text' : 'decimal'}
                       />
                     </div>
                   ))}

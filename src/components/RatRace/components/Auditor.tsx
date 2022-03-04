@@ -55,6 +55,7 @@ export default function Auditor(): ReactElement {
           className="flex border-b border-blue-900 my-2 py-2"
           labelClassName="pl-2 w-2/3"
           inputClassName="w-1/3 text-gray-600 w-full rounded-sm px-2"
+          inputMode="numeric"
         />
         <Form.Input
           fieldName="children.perChildExpense"
@@ -62,6 +63,7 @@ export default function Auditor(): ReactElement {
           className="flex border-b border-blue-900 my-2 py-2"
           labelClassName="pl-2 w-2/3"
           inputClassName="w-1/3 text-gray-600 w-full rounded-sm px-2"
+          inputMode="decimal"
         />
         <div className="my-2 py-5">
           <div className="flex justify-end">

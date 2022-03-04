@@ -172,6 +172,7 @@ export default function FastTrack(): ReactElement {
                               as="input"
                               name={`incomeRecord.${rowIndex}.${index}`}
                               className="text-gray-600 rounded-sm px-2 w-full"
+                              inputMode={index === 0 ? 'text' : 'decimal'}
                             />
                           </div>
                         ))}

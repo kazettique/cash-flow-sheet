@@ -34,6 +34,7 @@ export default function Liabilities(): ReactElement {
         className="flex border-b border-blue-900 my-2 py-2"
         labelClassName="pl-2 w-2/3"
         inputClassName="w-1/3 text-gray-600 w-full rounded-sm px-2"
+        inputMode="decimal"
       />
       <Form.Input
         fieldName="balanceSheet.liabilities.schoolLoans"
@@ -41,6 +42,7 @@ export default function Liabilities(): ReactElement {
         className="flex border-b border-blue-900 my-2 py-2"
         labelClassName="pl-2 w-2/3"
         inputClassName="w-1/3 text-gray-600 w-full rounded-sm px-2"
+        inputMode="decimal"
       />
       <Form.Input
         fieldName="balanceSheet.liabilities.carLoans"
@@ -48,6 +50,7 @@ export default function Liabilities(): ReactElement {
         className="flex border-b border-blue-900 my-2 py-2"
         labelClassName="pl-2 w-2/3"
         inputClassName="w-1/3 text-gray-600 w-full rounded-sm px-2"
+        inputMode="decimal"
       />
       <Form.Input
         fieldName="balanceSheet.liabilities.creditCards"
@@ -55,6 +58,7 @@ export default function Liabilities(): ReactElement {
         className="flex border-b border-blue-900 my-2 py-2"
         labelClassName="pl-2 w-2/3"
         inputClassName="w-1/3 text-gray-600 w-full rounded-sm px-2"
+        inputMode="decimal"
       />
       <Form.Input
         fieldName="balanceSheet.liabilities.loan"
@@ -62,6 +66,7 @@ export default function Liabilities(): ReactElement {
         className="flex border-b border-blue-900 my-2 py-2"
         labelClassName="pl-2 w-2/3"
         inputClassName="w-1/3 text-gray-600 w-full rounded-sm px-2"
+        inputMode="decimal"
       />
       <TableHeader columnList={realEstateHeader} />
       <FieldArray name="balanceSheet.liabilities.realEstate">
@@ -83,6 +88,7 @@ export default function Liabilities(): ReactElement {
                         as="input"
                         name={`balanceSheet.liabilities.realEstate.${rowIndex}.${index}`}
                         className="text-gray-600 rounded-sm px-2 w-full"
+                        inputMode={index === 0 ? 'text' : 'decimal'}
                       />
                     </div>
                   ))}
@@ -131,6 +137,7 @@ export default function Liabilities(): ReactElement {
                         as="input"
                         name={`balanceSheet.liabilities.business.${rowIndex}.${index}`}
                         className="text-gray-600 rounded-sm px-2 w-full"
+                        inputMode={index === 0 ? 'text' : 'decimal'}
                       />
                     </div>
                   ))}

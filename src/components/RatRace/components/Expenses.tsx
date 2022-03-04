@@ -29,6 +29,7 @@ export default function Expenses(): ReactElement {
         className="flex border-b border-blue-900 my-2 py-2"
         labelClassName="pl-2 w-2/3"
         inputClassName="w-1/3 text-gray-600 rounded-sm px-2"
+        inputMode="decimal"
       />
       <Form.Input
         fieldName="incomeStatement.homeMortgagePayment"
@@ -36,6 +37,7 @@ export default function Expenses(): ReactElement {
         className="flex border-b border-blue-900 my-2 py-2"
         labelClassName="pl-2 w-2/3"
         inputClassName="w-1/3 text-gray-600 rounded-sm px-2"
+        inputMode="decimal"
       />
       <Form.Input
         fieldName="incomeStatement.schoolLoanPayment"
@@ -43,6 +45,7 @@ export default function Expenses(): ReactElement {
         className="flex border-b border-blue-900 my-2 py-2"
         labelClassName="pl-2 w-2/3"
         inputClassName="w-1/3 text-gray-600 rounded-sm px-2"
+        inputMode="decimal"
       />
       <Form.Input
         fieldName="incomeStatement.carLoanPayment"
@@ -50,6 +53,7 @@ export default function Expenses(): ReactElement {
         className="flex border-b border-blue-900 my-2 py-2"
         labelClassName="pl-2 w-2/3"
         inputClassName="w-1/3 text-gray-600 rounded-sm px-2"
+        inputMode="decimal"
       />
       <Form.Input
         fieldName="incomeStatement.creditCardPayment"
@@ -57,6 +61,7 @@ export default function Expenses(): ReactElement {
         className="flex border-b border-blue-900 my-2 py-2"
         labelClassName="pl-2 w-2/3"
         inputClassName="w-1/3 text-gray-600 rounded-sm px-2"
+        inputMode="decimal"
       />
       <Form.Input
         fieldName="incomeStatement.otherExpenses"
@@ -64,6 +69,7 @@ export default function Expenses(): ReactElement {
         className="flex border-b border-blue-900 my-2 py-2"
         labelClassName="pl-2 w-2/3"
         inputClassName="w-1/3 text-gray-600 rounded-sm px-2"
+        inputMode="decimal"
       />
       <div className="flex border-b border-blue-900 my-2 py-2">
         <div className="pl-2 w-2/3">Child Expenses</div>
@@ -76,6 +82,7 @@ export default function Expenses(): ReactElement {
         className="flex border-b border-blue-900 my-2 py-2"
         labelClassName="pl-2 w-2/3"
         inputClassName="w-1/3 text-gray-600 rounded-sm px-2"
+        inputMode="decimal"
       />
     </>
   );

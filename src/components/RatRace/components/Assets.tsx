@@ -70,6 +70,7 @@ export default function Assets(): ReactElement {
                         as="input"
                         name={`balanceSheet.assets.stocks.${rowIndex}.${index}`}
                         className="text-gray-600 rounded-sm px-2 w-full"
+                        inputMode={index === 0 ? 'text' : index === 1 ? 'numeric' : 'decimal'}
                       />
                     </div>
                   ))}
@@ -118,6 +119,7 @@ export default function Assets(): ReactElement {
                         as="input"
                         name={`balanceSheet.assets.funds.${rowIndex}.${index}`}
                         className="text-gray-600 rounded-sm px-2 w-full"
+                        inputMode={index === 0 ? 'text' : index === 1 ? 'numeric' : 'decimal'}
                       />
                     </div>
                   ))}
@@ -165,6 +167,7 @@ export default function Assets(): ReactElement {
                         as="input"
                         name={`balanceSheet.assets.cds.${rowIndex}.${index}`}
                         className="text-gray-600 rounded-sm px-2 w-full"
+                        inputMode={index === 0 ? 'text' : index === 1 ? 'numeric' : 'decimal'}
                       />
                     </div>
                   ))}
@@ -213,6 +216,7 @@ export default function Assets(): ReactElement {
                         as="input"
                         name={`balanceSheet.assets.realEstate.${rowIndex}.${index}`}
                         className="text-gray-600 rounded-sm px-2 w-full"
+                        inputMode={index === 0 ? 'text' : 'decimal'}
                       />
                     </div>
                   ))}
@@ -261,6 +265,7 @@ export default function Assets(): ReactElement {
                         as="input"
                         name={`balanceSheet.assets.business.${rowIndex}.${index}`}
                         className="text-gray-600 rounded-sm px-2 w-full"
+                        inputMode={index === 0 ? 'text' : 'decimal'}
                       />
                     </div>
                   ))}
