@@ -29,23 +29,23 @@ export default function RatRace(): ReactElement {
       </div>
       <div className="mb-4">
         <SheetTitle>Income Statement</SheetTitle>
-        <div className="flex">
-          <div className="w-1/2 p-2 m-1 rounded-md border-2 border-blue-900">
+        <div className="sm:flex">
+          <div className="sm:w-1/2 w-full p-2 m-1 rounded-md border-2 border-blue-900">
             <Income />
             <Expenses />
           </div>
-          <div className="w-1/2 p-2 m-1 rounded-md border-2 border-blue-900">
+          <div className="sm:w-1/2 w-full p-2 m-1 rounded-md border-2 border-blue-900">
             <Auditor />
           </div>
         </div>
       </div>
       <div className="mb-4">
         <SheetTitle>Balance Sheet</SheetTitle>
-        <div className="flex">
-          <div className="w-1/2 p-2 m-1 rounded-md border-2 border-blue-900">
+        <div className="sm:flex">
+          <div className="sm:w-1/2 w-full p-2 m-1 rounded-md border-2 border-blue-900">
             <Assets />
           </div>
-          <div className="w-1/2 p-2 m-1 rounded-md border-2 border-blue-900">
+          <div className="sm:w-1/2 w-full p-2 m-1 rounded-md border-2 border-blue-900">
             <Liabilities />
           </div>
         </div>

@@ -5,6 +5,7 @@ import FastTrack from '@/components/FastTrack';
 import { OnSubmit } from '@/components/Form/types';
 import Form from '@/components/Form';
 import { useLocalStorageData } from '@/hooks';
+import _ from 'lodash';
 
 type Props = {
   currentPlayer: string;
@@ -33,17 +34,19 @@ export default function PlayerSheet(props: Props): ReactElement {
   };
 
   const onDelete = (player: string): void => {
-    deletePlayer(player);
-    const newPlayerList = getData();
-    setPlayerList(newPlayerList);
-    setCurrentPlayer(tabList[0]);
+    if (confirm('Confirm delete this player?')) {
+      deletePlayer(player);
+      const newPlayerList = getData();
+      setPlayerList(newPlayerList);
+      setCurrentPlayer('');
+    }
   };
 
   return (
     <div>
       <Form initialValues={sheet} onSubmit={onSubmit} validationSchema={validationSchema} enableReinitialize>
-        <div className="flex justify-between items-center my-2">
-          <h2 className="text-gray-800 text-2xl block">
+        <div className="sm:flex justify-between items-center my-2">
+          <h2 className="text-gray-800 sm:text-2xl text-md block">
             <span className="font-bold text-gray-700 italic">{currentPlayer}</span>
             <span> is </span>
             <span>{isRatRace ? 'in' : 'on'} </span>
@@ -53,7 +56,7 @@ export default function PlayerSheet(props: Props): ReactElement {
             <span> right now</span>
             <span>{isRatRace ? '.' : '!!'}</span>
           </h2>
-          <div>
+          <div className="sm:text-left text-right">
             <button type="submit" className="py-1 px-2 bg-green-500 uppercase text-gray-100 rounded-md shadow-md">
               Save
             </button>
