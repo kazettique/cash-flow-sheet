@@ -29,8 +29,8 @@ export default function FastTrack(): ReactElement {
         <h3 className="uppercase font-extrabold text-2xl">congratulations!</h3>
         <span className="font-bold">You are out of the Rat Race!</span>
       </div>
-      <div className="mb-4 flex">
-        <div className="w-1/2 p-2 m-1">
+      <div className="mb-4 sm:flex">
+        <div className="sm:w-1/2 w-full p-2 m-1">
           <div className="">
             <h4 className="font-bold py-4">New Goals:</h4>
             <ol className="list-decimal pl-4">
@@ -62,7 +62,7 @@ export default function FastTrack(): ReactElement {
             </p>
           </div>
         </div>
-        <div className="w-1/2 p-2 m-1 rounded-md border-2 border-yellow-700">
+        <div className="sm:w-1/2 w-full p-2 m-1 rounded-md border-2 border-yellow-700">
           <TableTitle className="bg-yellow-700">CASHFLOW Day Income</TableTitle>
           <div className="my-4">
             <div className="flex">
@@ -125,12 +125,12 @@ export default function FastTrack(): ReactElement {
         </div>
       </div>
       <div className="mb-4 p-2 m-1 rounded-md border-2 border-yellow-700">
-        <div className="flex">
-          <div className="mr-2 w-1/2">
+        <div className="sm:flex">
+          <div className="mr-2 sm:w-1/2 w-full">
             Your new CASHFLOW Day Income is equal to your Beginning CASHFLOW Day Income plus the Cash Flow from every
             Business you buy on the Fast Track.
           </div>
-          <div className="my-4 w-1/2">
+          <div className="my-4 sm:w-1/2 w-full">
             <div className="flex">
               <div className="w-1/2">
                 <div className="font-semibold mr-2">Beginning CASHFLOW Day Income</div>
