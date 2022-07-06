@@ -1,7 +1,11 @@
-import { useMobileViewPortHeight } from '@/hooks';
+import { useDebounce, useMobileViewPortHeight } from '@/hooks';
+import { useState } from 'react';
 
 export default function TestMobileViewPort() {
   const { style, containerHeight } = useMobileViewPortHeight();
+  const [count, setCount] = useState<number>(0);
+
+  const handleClick = useDebounce(() => setCount((prev) => prev + 1));
 
   return (
     <div className="h-full w-screen flex flex-col" style={style}>
@@ -46,8 +50,11 @@ export default function TestMobileViewPort() {
         obcaecati iusto consequuntur amet cumque doloremque nemo, porro saepe eligendi quod beatae culpa assumenda eos
         tempore exercitationem numquam dolore velit! Deleniti perspiciatis totam unde veniam.
       </div>
-      <div data-footer className="w-full h-8 shrink-0 bg-blue-300">
-        footer
+      <div data-footer className="w-full h-11 shrink-0 bg-blue-300">
+        <div>{count}</div>
+        <button type="button" onClick={handleClick}>
+          counter
+        </button>
       </div>
     </div>
   );

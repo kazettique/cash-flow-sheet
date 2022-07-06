@@ -1,6 +1,6 @@
 import { useFormikContext } from 'formik';
 import _ from 'lodash';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { LocalStorageType, Sheet } from './types';
 
 type SheetTotal = {
@@ -167,6 +167,20 @@ function useIsPortrait(): boolean {
   return isPortrait;
 }
 
+export function useDebounce(debounceFunc: () => void, debounceTimeInMs = 300) {
+  const timerRef = useRef<NodeJS.Timeout>();
+
+  const debounceCallBack = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+
+    timerRef.current = setTimeout(debounceFunc, debounceTimeInMs);
+  };
+
+  return debounceCallBack;
+}
+
 export function useMobileViewPortHeight() {
   const [containerHeight, setContainerHeight] = useState<number | null>(null);
 
@@ -174,6 +188,8 @@ export function useMobileViewPortHeight() {
     const currentWindowHeight = window.innerHeight;
     setContainerHeight(currentWindowHeight);
   };
+
+  const debouncedUpdateHeight = useDebounce(updateHeight, 500);
 
   useEffect(() => {
     const portrait = window.matchMedia('(orientation:portrait)');
@@ -183,10 +199,10 @@ export function useMobileViewPortHeight() {
 
   useEffect(() => {
     updateHeight();
-    window.addEventListener('resize', updateHeight);
+    window.addEventListener('resize', debouncedUpdateHeight);
 
-    return () => window.removeEventListener('resize', updateHeight);
-  }, []);
+    return () => window.removeEventListener('resize', debouncedUpdateHeight);
+  }, [debouncedUpdateHeight]);
 
   const style = containerHeight ? { height: containerHeight } : {};
 
