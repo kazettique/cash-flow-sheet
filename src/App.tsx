@@ -82,7 +82,7 @@ function App() {
   //     </div>
   //   </div>
   // );
-  return <TestMobileViewPort />
+  return <TestMobileViewPort />;
 }
 
 export default App;
