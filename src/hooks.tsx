@@ -1,5 +1,6 @@
 import { useFormikContext } from 'formik';
 import _ from 'lodash';
+import { useState, useEffect } from 'react';
 import { Sheet, LocalStorageType } from './types';
 
 type SheetTotal = {
@@ -133,4 +134,19 @@ export function useLocalStorageData() {
     deletePlayer,
     renamePlayer,
   };
+}
+
+export function useMobileViewPortHeight(elementRef: HTMLDivElement | null) {
+  const [containerHeight, setContainerHeight] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (elementRef) {
+      const currentWindowHeight = window.innerHeight;
+      setContainerHeight(currentWindowHeight);
+    }
+  }, [elementRef]);
+
+  const style = containerHeight ? { height: containerHeight } : {};
+
+  return { style, containerHeight };
 }
