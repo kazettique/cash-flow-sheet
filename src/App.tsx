@@ -6,7 +6,7 @@ import PlayerSheet from '@/pages/PlayerSheet';
 import { LocalStorageType } from '@/types';
 import { getInitialPlayerSheet } from '@/utils';
 import { useLocalStorageData } from '@/hooks';
-import TestMobileViewPort from '@/components/TestMobileViewPor';
+import TestMobileViewPort from '@/components/TestMobileViewPort';
 
 // type PlayerList = {
 //   [player: string]: Sheet;
