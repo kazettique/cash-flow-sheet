@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-type Props = {}
-
-export default function TestMobileViewPor({}: Props) {
+export default function TestMobileViewPor() {
   const [containerHeight, setContainerHeight] = useState<number | null>(null);
   const elementRef = useRef<HTMLDivElement>(null);
 
