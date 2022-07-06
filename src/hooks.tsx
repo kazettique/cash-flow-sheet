@@ -1,7 +1,7 @@
 import { useFormikContext } from 'formik';
 import _ from 'lodash';
-import { useState, useEffect } from 'react';
-import { Sheet, LocalStorageType } from './types';
+import { useCallback, useEffect, useState } from 'react';
+import { LocalStorageType, Sheet } from './types';
 
 type SheetTotal = {
   totalRealEstateCashFlow: number;
@@ -136,15 +136,57 @@ export function useLocalStorageData() {
   };
 }
 
-export function useMobileViewPortHeight(elementRef: HTMLDivElement | null) {
-  const [containerHeight, setContainerHeight] = useState<number | null>(null);
+function useIsPortrait(): boolean {
+  const [isPortrait, setIsPortrait] = useState<boolean>(false);
+
+  const updateOrientation = useCallback((event: MediaQueryListEvent) => {
+    if (event.matches) {
+      // Portrait mode
+      setIsPortrait(true);
+    } else {
+      // Landscape
+      setIsPortrait(false);
+    }
+  }, []);
 
   useEffect(() => {
-    if (elementRef) {
-      const currentWindowHeight = window.innerHeight;
-      setContainerHeight(currentWindowHeight);
+    const portrait = window.matchMedia('(orientation: portrait)');
+
+    if (portrait.matches) {
+      setIsPortrait(true);
     }
-  }, [elementRef]);
+
+    portrait.addEventListener('change', updateOrientation);
+    return () => portrait.removeEventListener('change', updateOrientation);
+  }, [updateOrientation]);
+
+  useEffect(() => {
+    console.log('isPortrait: ', isPortrait);
+  }, [isPortrait]);
+
+  return isPortrait;
+}
+
+export function useMobileViewPortHeight() {
+  const [containerHeight, setContainerHeight] = useState<number | null>(null);
+
+  const updateHeight = () => {
+    const currentWindowHeight = window.innerHeight;
+    setContainerHeight(currentWindowHeight);
+  };
+
+  useEffect(() => {
+    const portrait = window.matchMedia('(orientation:portrait)');
+    updateHeight();
+    portrait.addEventListener('change', updateHeight);
+  }, []);
+
+  useEffect(() => {
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
+
+    return () => window.removeEventListener('resize', updateHeight);
+  }, []);
 
   const style = containerHeight ? { height: containerHeight } : {};
 

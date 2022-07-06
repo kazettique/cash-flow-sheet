@@ -1,20 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useMobileViewPortHeight } from '@/hooks';
 
 export default function TestMobileViewPort() {
-  const [containerHeight, setContainerHeight] = useState<number | null>(null);
-  const elementRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (elementRef) {
-      const currentWindowHeight = window.innerHeight;
-      setContainerHeight(currentWindowHeight);
-    }
-  }, [elementRef]);
-
-  const style = containerHeight ? { height: containerHeight } : {};
+  const { style, containerHeight } = useMobileViewPortHeight();
 
   return (
-    <div className="h-full w-screen flex flex-col" ref={elementRef} style={style}>
+    <div className="h-full w-screen flex flex-col" style={style}>
       <div data-header className="bg-blue-300 h-11 shrink-0 w-full">
         <div>header</div>
         <div>containerHeight: {containerHeight}px</div>
